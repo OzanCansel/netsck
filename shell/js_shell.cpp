@@ -2,6 +2,7 @@
 #include <QQmlEngine>
 #include <QJSValueIterator>
 #include <iostream>
+#include "socket/udp_socket.hpp"
 
 js_shell::js_shell()
 {
@@ -21,6 +22,11 @@ js_shell::js_shell()
     }
 
     QQmlEngine::setObjectOwnership( this , QQmlEngine::CppOwnership );
+
+    m_engine.globalObject().setProperty(
+        "udp_socket" ,
+        m_engine.newQMetaObject( &udp_socket::staticMetaObject )
+    );
 }
 
 void js_shell::process( QString line )

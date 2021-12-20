@@ -13,9 +13,14 @@ add_executable( netsck main.cpp
                        shell/shell.hpp
                        shell/shell.cpp
                        shell/js_shell.hpp
-                       shell/js_shell.cpp)
+                       shell/js_shell.cpp
+                       socket/socket.hpp
+                       socket/socket.cpp
+                       socket/udp_socket.hpp
+                       socket/udp_socket.cpp )
 
-target_include_directories( netsck PRIVATE replxx:replxx )
+target_include_directories( netsck PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
+                                           replxx:replxx )
 
 target_link_libraries( netsck PRIVATE Qt5::Core
                                       Qt5::Network
