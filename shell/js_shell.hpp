@@ -21,5 +21,8 @@ signals:
 
 private:
 
+    void inject_self();
+    void inject_classes();
+
     QJSEngine m_engine;
 };
