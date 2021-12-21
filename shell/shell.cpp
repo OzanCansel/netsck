@@ -34,23 +34,12 @@ shell::~shell()
 
 void shell::read_line()
 {
-    char const* cinput { };
+    auto in = m_terminal.input( PROMPT );
 
-    cinput = m_terminal.input( PROMPT );
-
-    if ( !cinput )
-    {
-        emit input( QString {} );
-
-        return;
-    }
-
-    auto line_str = std::string { cinput };
-
-    m_terminal.history_add( line_str );
+    m_terminal.history_add( in );
     m_terminal.history_save( history_file_path() );
 
-    QString line = QString::fromStdString( line_str );
+    QString line { in };
 
     if ( check_if_exit_entered( line ) )
     {
