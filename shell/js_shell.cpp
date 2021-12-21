@@ -19,6 +19,15 @@ void js_shell::help()
               << std::endl;
 }
 
+void js_shell::dump( QJSValue val )
+{
+    QJSValue fun = m_engine.evaluate(
+        "(function( a ) { print( JSON.stringify( a , null , 4 ) ) } )"
+    );
+
+    fun.call( QJSValueList { val } );
+}
+
 void js_shell::process( QString line )
 {
     auto result = m_engine.evaluate( line );

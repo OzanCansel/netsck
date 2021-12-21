@@ -14,6 +14,7 @@ public:
 public slots:
 
     void help();
+    void dump( QJSValue );
     void process( QString );
 
 signals:
