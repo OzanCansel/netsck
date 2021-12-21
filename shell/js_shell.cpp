@@ -12,6 +12,12 @@ js_shell::js_shell()
     inject_classes();
 }
 
+void js_shell::help()
+{
+    std::cout << "Unfortunately 'help()' has not implemented yet."
+              << std::endl;
+}
+
 void js_shell::process( QString line )
 {
     auto result = m_engine.evaluate( line );

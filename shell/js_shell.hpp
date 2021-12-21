@@ -13,6 +13,7 @@ public:
 
 public slots:
 
+    void help();
     void process( QString );
 
 signals:
