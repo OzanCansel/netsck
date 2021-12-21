@@ -178,8 +178,8 @@ void shell::hook_highlighter(
         {
             std::string c{ match[0] };
             std::string prefix( match.prefix().str() );
-            pos += int( prefix.length() );
-            int len( int( c.length() ) );
+            pos += QString::fromStdString( prefix ).size();
+            int len( QString::fromStdString( c ).size() );
 
             for ( int i = 0; i < len; ++i )
                 colors.at(pos + i) = e.second;
