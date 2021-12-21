@@ -56,7 +56,7 @@ void shell::read_line()
     {
         QMetaObject::invokeMethod(
             QCoreApplication::instance() ,
-            QCoreApplication::quit
+            "quit"
         );
     }
     else
@@ -81,7 +81,7 @@ void shell::start()
 
     QMetaObject::invokeMethod(
         this ,
-        &shell::read_line ,
+        "read_line" ,
         Qt::QueuedConnection
     );
 }
