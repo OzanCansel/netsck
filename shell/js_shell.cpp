@@ -3,6 +3,7 @@
 #include <QJSValueIterator>
 #include <iostream>
 #include "socket/udp_socket.hpp"
+#include "hex/hex_utility.hpp"
 
 js_shell::js_shell()
 {
@@ -52,6 +53,14 @@ void js_shell::inject_self()
 
 void js_shell::inject_classes()
 {
+    static hex_utility hex_instance;
+
+    QQmlEngine::setObjectOwnership( &hex_instance , QQmlEngine::CppOwnership );
+
+    m_engine.globalObject().setProperty(
+        "Hex" ,
+        m_engine.newQObject( &hex_instance )
+    );
     m_engine.globalObject().setProperty(
         "udp_socket" ,
         m_engine.newQMetaObject( &udp_socket::staticMetaObject )

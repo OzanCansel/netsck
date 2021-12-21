@@ -17,7 +17,9 @@ add_executable( netsck main.cpp
                        socket/socket.hpp
                        socket/socket.cpp
                        socket/udp_socket.hpp
-                       socket/udp_socket.cpp )
+                       socket/udp_socket.cpp
+                       hex/hex_utility.hpp
+                       hex/hex_utility.cpp )
 
 target_include_directories( netsck PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
                                            replxx:replxx )
