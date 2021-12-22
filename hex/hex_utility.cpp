@@ -14,8 +14,9 @@ void hex_utility::print( const QByteArray& data ) const
 {
     using namespace tableprinter;
 
+    static constexpr int col_len = 3;
+
     int padding = std::log10( std::size( data ) ) + 2;
-    int col_len = 3;
 
     printer p
     {
