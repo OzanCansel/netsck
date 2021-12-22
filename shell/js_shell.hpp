@@ -14,6 +14,7 @@ public:
 public slots:
 
     void help();
+    void run( QString file_path );
     void dump( QJSValue );
     void process( QString );
 
@@ -23,6 +24,7 @@ signals:
 
 private:
 
+    void print_if_error( QJSValue );
     void inject_self();
     void inject_classes();
 
