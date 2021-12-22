@@ -28,6 +28,20 @@ bool udp_socket::has_datagram()
     return pending;
 }
 
+void udp_socket::clear()
+{
+    int count {};
+
+    while ( m_sck.hasPendingDatagrams() )
+    {
+        m_sck.receiveDatagram();
+        ++count;
+    }
+
+    if ( stdout_enabled() )
+        std::cout << count << " datagrams cleared." << std::endl;
+}
+
 QVariant udp_socket::read_datagram()
 {
     if ( m_sck.state() != QAbstractSocket::BoundState ||

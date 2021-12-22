@@ -17,6 +17,7 @@ public slots:
 
     bool has_datagram();
     QVariant read_datagram();
+    void clear();
     qint64 send( QByteArray , QString , int );
 
 signals:
