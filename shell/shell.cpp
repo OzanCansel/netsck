@@ -36,12 +36,29 @@ shell::~shell()
 
 void shell::read_line()
 {
-    auto in = m_terminal.input( PROMPT );
+    auto in = m_terminal.input(
+        !m_input.isEmpty() ? "" : PROMPT
+    );
 
     m_terminal.history_add( in );
     m_terminal.history_save( history_file_path() );
 
-    QString line { in };
+    QString line = QString { in }.trimmed();
+
+    if ( check_if_continues( line ) )
+    {
+        line.resize( std::size( line ) - 1 );
+
+        m_input.append( line )
+               .append( '\n' );
+
+        read_line();
+
+        return;
+    }
+
+    m_input.append( line )
+           .append( '\n' );
 
     if ( check_if_exit_entered( line ) )
     {
@@ -52,7 +69,9 @@ void shell::read_line()
     }
     else
     {
-        emit input( line );
+        emit input( m_input );
+
+        m_input.clear();
     }
 }
 
@@ -77,12 +96,18 @@ void shell::start()
     );
 }
 
+bool shell::check_if_continues( const QString& input )
+{
+    return !input.isEmpty() &&
+           input[ std::size( input ) - 1 ] == '\\';
+}
+
 bool shell::check_if_exit_entered( const QString& input )
 {
-    return input == "quit" ||
-           input == "exit" ||
-           input.contains( "quit()" ) ||
-           input.contains( "exit()" );
+    return input == "quit"   ||
+           input == "exit"   ||
+           input == "quit()" ||
+           input == "exit()" ;
 }
 
 void shell::configure_terminal()

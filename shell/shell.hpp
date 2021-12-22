@@ -28,6 +28,7 @@ private:
 
     void print_welcome_prompt();
     void start();
+    bool check_if_continues( const QString& input );
     bool check_if_exit_entered( const QString& input );
     void configure_terminal();
     std::string history_file_path();
@@ -39,6 +40,8 @@ private:
     ) const;
 
     using highlight_entry = std::pair<std::string , replxx::Replxx::Color>;
+
+    QString m_input;
 
     std::vector<highlight_entry> m_highlights;
     replxx::Replxx m_terminal;
