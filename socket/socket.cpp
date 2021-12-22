@@ -91,6 +91,16 @@ bool socket::bind( int port , QAbstractSocket::BindMode mode ) noexcept
     return bind( "0.0.0.0" , port , mode );
 }
 
+bool socket::wait( int duration )
+{
+    return m_sck.waitForReadyRead( duration );
+}
+
+bool socket::wait_a_bit( int duration )
+{
+    return m_sck.waitForReadyRead( duration );
+}
+
 QAbstractSocket::SocketError socket::error() const noexcept
 {
     auto error = m_sck.error();
