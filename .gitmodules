@@ -1,3 +1,6 @@
 [submodule "third_party/replxx"]
 	path = third_party/replxx
 	url = https://github.com/AmokHuginnsson/replxx.git
+[submodule "third_party/tableprinter"]
+	path = third_party/tableprinter
+	url = https://github.com/OzanCansel/tableprinter

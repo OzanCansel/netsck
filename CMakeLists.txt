@@ -8,6 +8,7 @@ find_package( Qt5Network REQUIRED )
 find_package( Qt5Qml REQUIRED )
 
 add_subdirectory( third_party/replxx EXCLUDE_FROM_ALL )
+add_subdirectory( third_party/tableprinter EXCLUDE_FROM_ALL )
 
 add_executable( netsck main.cpp
                        shell/shell.hpp
@@ -27,6 +28,7 @@ target_include_directories( netsck PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
 target_link_libraries( netsck PRIVATE Qt5::Core
                                       Qt5::Network
                                       Qt5::Qml
-                                      replxx::replxx )
+                                      replxx::replxx
+                                      tableprinter::tableprinter )
 
 target_compile_features( netsck PRIVATE cxx_std_17 )
