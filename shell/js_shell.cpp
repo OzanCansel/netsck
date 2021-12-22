@@ -74,8 +74,9 @@ void js_shell::print_if_error( QJSValue result )
 {
     if ( result.isError() )
     {
-        std::cout << "Uncaught exception. "
+        std::cout << "Uncaught exception. '"
                   << result.toString().toStdString()
+                  << '\''
                   << std::endl;
     }
 }
