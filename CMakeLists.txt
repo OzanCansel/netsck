@@ -2,6 +2,7 @@ cmake_minimum_required( VERSION 3.10 )
 project( netsck )
 
 set( CMAKE_AUTOMOC ON )
+set( CMAKE_AUTORCC ON )
 
 find_package( Qt5Core REQUIRED )
 find_package( Qt5Network REQUIRED )
@@ -11,10 +12,13 @@ add_subdirectory( third_party/replxx EXCLUDE_FROM_ALL )
 add_subdirectory( third_party/tableprinter EXCLUDE_FROM_ALL )
 
 add_executable( netsck main.cpp
+                       doc.qrc
                        shell/shell.hpp
                        shell/shell.cpp
                        shell/js_shell.hpp
                        shell/js_shell.cpp
+                       help/help_doc.hpp
+                       help/help_doc.cpp
                        socket/socket.hpp
                        socket/socket.cpp
                        socket/udp_socket.hpp

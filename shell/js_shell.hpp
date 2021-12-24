@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QJSEngine>
+#include <QDir>
+#include "help/help_doc.hpp"
 
 class js_shell : public QObject
 {
@@ -13,7 +15,7 @@ public:
 
 public slots:
 
-    void help();
+    void help( QString topic = QString { "base-api" } );
     void run( QString file_path );
     void dump( QJSValue );
     void process( QString );
@@ -28,5 +30,6 @@ private:
     void inject_self();
     void inject_classes();
 
+    help_doc m_doc;
     QJSEngine m_engine;
 };

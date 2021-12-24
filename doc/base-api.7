@@ -1,0 +1,66 @@
+.TH netsck 7 2021-12-23 "API" "Javascript API Manual"
+
+.SH NAME
+netsck \- network utility tool
+
+.SH DESCRIPTION
+.BR netsck
+is a network utility tool which enables to prototype or test network things.
+It provides a shell inside which runs a javascript engine.
+This manual will present the
+.I netsck_Javascript_API
+inside the shell.
+.PP
+.PP
+Note that, shell supports multiline input with trailing escape '\\' character.
+
+.SH ENGINE
+Uses
+.I QJSEngine
+class to evaluate javascript codes
+so anything which QJSEngine supports available to the user.
+
+.SH METHODS
+
+.TP
+.B help( <topic> : string = "base-api" )
+Opens the man page according to the topic.
+If topic isn't given then opens this man page.
+
+.TP
+.B run( <file_path> : string )
+Executes the lines inside the file.
+
+.TP
+.B dump( <object> : any )
+Prints the content of any object to the stdout.
+
+.SH CLASSES
+Detailed class documentations can be found through 
+.B help()
+with their class names.
+
+.br
+For example, help( "udp_socket" ).
+
+.PP
+\- PascalCase naming means the class is
+.B singleton.
+.PP
+\- snake_case naming means the class is
+.B instantiable.
+
+.TP
+.B socket
+.br
+Base class which provides an abstract base for socket classes.
+
+.TP
+.B udp_socket
+Socket class which enables to send or receive udp datagrams.
+
+.TP
+.B Hex
+.br
+Singleton hexadecimal utility class which prints QByteArray
+as hexadecimal or creates a QByteArray from hexadecimal string.

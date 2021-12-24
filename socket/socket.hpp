@@ -28,7 +28,7 @@ public slots:
         QAbstractSocket::BindMode mode = QAbstractSocket::DefaultForPlatform
     ) noexcept;
     bool wait( int duration = -1 );
-    bool wait_a_bit( int duration = 0 );
+    bool wait_a_bit();
     QAbstractSocket::SocketError error() const noexcept;
 
 private:

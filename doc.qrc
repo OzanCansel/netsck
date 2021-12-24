@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>doc/base-api.7</file>
+        <file>doc/socket.7</file>
+        <file>doc/udp_socket.7</file>
+        <file>doc/hex.7</file>
+    </qresource>
+</RCC>

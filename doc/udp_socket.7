@@ -1,0 +1,87 @@
+.TH netsck 7 2021-12-23 "API" "Javascript API Manual"
+
+.SH NAME
+udp_socket : class
+
+.SH DESCRIPTION
+.BR udp_socket
+is a concrete class which inherits
+.BR socket.
+It is binding of QUdpSocket class.
+All methods of
+.BR socket
+class is usable.
+
+.SH EXAMPLE
+.B var
+echo_srv = new
+.B udp_socket()
+.br
+.B var
+client   = new
+.B udp_socket()
+.PP
+echo_srv.bind( "127.0.0.1" , 12000 )
+.br
+// Send 'echo' to echo_srv
+.PP
+client.send( "echo" , "127.0.0.1" , 12000 )
+.PP
+echo_srv.wait()
+.PP
+.B var
+dgram = echo_srv.read_datagram()
+.br
+dump( dgram )
+.br
+echo_srv.send( dgram.data , dgram.sender_addr , dgram.sender_port )
+.PP
+client.wait()
+.br
+dump( client.read_datagram() )
+
+.SH OBJECTS
+.B datagram : object
+.br   
+{
+    sender_addr : string ,
+    sender_port : int ,
+    dest_addr   : string ,
+    dest_port   : int ,
+    data        : QByteArray ,
+    data_utf8   : string ,
+    hop_limit   : int ,
+    iface_idx   : int
+.br
+}
+
+It is returned from
+.BR read_datagram()
+method.
+
+.SH METHODS
+.B stdout_enabled() -> bool
+Returns a value which indicates whether info messages are enabled.
+
+.TP
+.B has_datagram() -> bool
+Returns true if has pending datagram, otherwise false.
+
+.TP
+.B read_datagram() -> datagram
+Returns the pending datagram. If there is not datagram returns an 'undefined'.
+
+.TP
+.B clear()
+Discards all pending datagrams.
+
+.TP
+.B send( data : QByteArray , addr : string , port : int ) -> qint64
+Sends 'data' to 'addr:port' as udp packet.
+Returns how many bytes have been written.
+
+.SH SIGNALS
+
+.TP
+.B datagram()
+Emitted when a new datagram has come.

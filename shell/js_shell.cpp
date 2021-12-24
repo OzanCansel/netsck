@@ -2,7 +2,13 @@
 #include <QQmlEngine>
 #include <QJSValueIterator>
 #include <QFile>
+#include <QProcess>
+#include <QStandardPaths>
+#include <QFileInfo>
 #include <iostream>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 #include "socket/udp_socket.hpp"
 #include "hex/hex_utility.hpp"
 
@@ -14,10 +20,24 @@ js_shell::js_shell()
     inject_classes();
 }
 
-void js_shell::help()
+void js_shell::help( QString topic )
 {
-    std::cout << "Unfortunately 'help()' has not implemented yet."
-              << std::endl;
+    if ( !m_doc.exists( topic ) )
+    {
+        std::cout << "Topic '"
+                  << topic.toStdString()
+                  << "' doesn't exist."
+                  << std::endl;
+
+        return;
+    }
+
+    auto command = QString {
+        "/bin/man %1"
+    }.arg( m_doc.file_path( topic ) )
+     .toStdString();
+
+    system( command.c_str() );
 }
 
 void js_shell::run( QString file_path )

@@ -1,0 +1,32 @@
+.TH netsck 7 2021-12-23 "API" "Javascript API Manual"
+
+.SH NAME
+Hex : singleton class
+
+.SH DESCRIPTION
+.BR Hex
+is a
+.BR singleton
+class.
+Prints
+.B QByteArray
+as hexadecimal in table format.
+Also constructs a
+.B QByteArray
+from hexadecimal string.
+
+.SH EXAMPLE
+Hex.print( Hex.from( "ab 01 23 11 14 78 64 77 34 24 12 09 08" ) )
+.br
+Hex.print( Hex.from( "ab012311147864773424120908" ) )
+.br
+Hex.print( "This is a test string." )
+
+.SH METHODS
+.TP
+.B print( data : QByteArray )
+Prints the data as hexadecimals in table format.
+
+.TP
+.B from( hex_data : QByteArray ) -> QByteArray
+Enables/Disables info messages according to the 'value' parameter. Default value is true.

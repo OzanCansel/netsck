@@ -96,9 +96,9 @@ bool socket::wait( int duration )
     return m_sck.waitForReadyRead( duration );
 }
 
-bool socket::wait_a_bit( int duration )
+bool socket::wait_a_bit()
 {
-    return m_sck.waitForReadyRead( duration );
+    return m_sck.waitForReadyRead( 0 );
 }
 
 QAbstractSocket::SocketError socket::error() const noexcept
