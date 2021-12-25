@@ -15,7 +15,9 @@ add_executable( netsck main.cpp
                        shell/js_shell.hpp
                        shell/js_shell.cpp
                        shell/input.hpp
-                       shell/input.cpp
+                       $<$<PLATFORM_ID:Windows>:shell/input_win.cpp>
+                       $<$<PLATFORM_ID:Linux>:shell/input_linux.cpp>
+                       $<$<PLATFORM_ID:Darwin>:shell/input_linux.cpp>
                        help/help_doc.hpp
                        help/help_doc.cpp
                        socket/socket.hpp

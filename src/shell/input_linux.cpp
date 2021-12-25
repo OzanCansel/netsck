@@ -1,30 +1,13 @@
 #include "input.hpp"
 #include <iostream>
 #include <cstdio>
-
-#ifdef Q_OS_WIN
-    #include <windows.h>
-#else
-    #include <termios.h>
-    #include <unistd.h>
-    #include <poll.h>
-#endif
+#include <algorithm>
+#include <termios.h>
+#include <unistd.h>
+#include <poll.h>
 
 void enable_stdin_echo( bool enable )
 {
-#ifdef WIN32
-    HANDLE hStdin = GetStdHandle( STD_INPUT_HANDLE );
-    DWORD mode;
-
-    GetConsoleMode( hStdin , &mode );
-
-    if( !enable )
-        mode &= ~ENABLE_ECHO_INPUT;
-    else
-        mode |= ENABLE_ECHO_INPUT;
-
-    SetConsoleMode( hStdin, mode );
-#else
     termios tty;
 
     tcgetattr( STDIN_FILENO , &tty );
@@ -35,24 +18,10 @@ void enable_stdin_echo( bool enable )
         tty.c_lflag |= ECHO;
 
     tcsetattr( STDIN_FILENO , TCSANOW , &tty );
-#endif
 }
 
 void enable_line_input( bool enable )
 {
-#ifdef WIN32
-    HANDLE hStdin = GetStdHandle( STD_INPUT_HANDLE ); 
-    DWORD mode;
-    GetConsoleMode( hStdin , &mode );
-
-    if( enable )
-        mode |= ENABLE_LINE_INPUT;
-    else
-        mode &= ~ENABLE_LINE_INPUT;
-
-    SetConsoleMode( hStdin, mode );
-
-#else
     termios tty;
     tcgetattr( STDIN_FILENO , &tty );
 
@@ -62,7 +31,6 @@ void enable_line_input( bool enable )
         tty.c_lflag &= ~ICANON;
 
     tcsetattr( STDIN_FILENO , TCSANOW , &tty );
-#endif
 }
 
 int wait_key( int timeout )
@@ -80,7 +48,7 @@ int wait_key( int timeout )
 
     if ( poll( fd , 1 , timeout ) > 0 )
         key = std::getchar();
-    
+
     enable_stdin_echo( true );
     enable_line_input( true );
 
