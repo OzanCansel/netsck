@@ -7,8 +7,6 @@
 #include <QFileInfo>
 #include <thread>
 #include <iostream>
-#include <unistd.h>
-#include <sys/wait.h>
 #include <sys/types.h>
 #include "socket/udp_socket.hpp"
 #include "hex/hex_utility.hpp"

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QObject>
+#include <array>
 
 class hex_utility : public QObject
 {
