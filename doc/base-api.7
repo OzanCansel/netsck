@@ -1,4 +1,4 @@
-.TH netsck 7 2021-12-23 "API" "Javascript API Manual"
+.TH netsck 7 2021-12-25 "API" "Javascript API Manual"
 
 .SH NAME
 netsck \- network utility tool
@@ -23,17 +23,31 @@ so anything which QJSEngine supports available to the user.
 .SH METHODS
 
 .TP
-.B help( <topic> : string = "base-api" )
+.B help( topic : string = "base-api" )
 Opens the man page according to the topic.
 If topic isn't given then opens this man page.
 
 .TP
-.B run( <file_path> : string )
+.B run( file_path : string )
 Executes the lines inside the file.
 
 .TP
-.B dump( <object> : any )
+.B dump( object : any )
 Prints the content of any object to the stdout.
+
+.TP
+.B sleep( duration : int )
+Sleeps current thread for specified duration.
+Unit is milliseconds.
+
+.TP
+.B wait_key( timeout : int )
+Waits for user to input a key and returns the value.
+Key value is the value returned from
+.B std::getchar().
+If timeout expires function returns -1.
+Unit of timeout is milliseconds.
+Note that if timeout is -1 it works like there is no timeout.
 
 .SH CLASSES
 Detailed class documentations can be found through 

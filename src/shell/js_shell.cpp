@@ -5,12 +5,14 @@
 #include <QProcess>
 #include <QStandardPaths>
 #include <QFileInfo>
+#include <thread>
 #include <iostream>
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/types.h>
 #include "socket/udp_socket.hpp"
 #include "hex/hex_utility.hpp"
+#include "input.hpp"
 
 js_shell::js_shell()
 {
@@ -79,6 +81,18 @@ void js_shell::dump( QJSValue val )
     );
 
     fun.call( QJSValueList { val } );
+}
+
+void js_shell::sleep( int duration_ms )
+{
+    std::this_thread::sleep_for(
+        std::chrono::milliseconds { duration_ms }
+    );
+}
+
+int js_shell::wait_key( int timeout )
+{
+    return ::wait_key( timeout );
 }
 
 void js_shell::process( QString line )
