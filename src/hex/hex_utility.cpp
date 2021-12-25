@@ -44,20 +44,11 @@ void hex_utility::print( const QByteArray& data ) const
     p.print_headers()
      .echo( seperator );
 
-    for ( const auto& r : rows )
+    for ( const row& r : rows )
     {
         p.print(
             std::to_string( r.idx ) + '|' ,
-            r.cols[ 0 ] ,
-            r.cols[ 1 ] ,
-            r.cols[ 2 ] ,
-            r.cols[ 3 ] ,
-            r.cols[ 4 ] ,
-            r.cols[ 5 ] ,
-            r.cols[ 6 ] ,
-            r.cols[ 7 ] ,
-            r.cols[ 8 ] ,
-            r.cols[ 9 ] ,
+            sequence( r.cols ) ,
             '|' + std::to_string( r.idx )
         );
     }
