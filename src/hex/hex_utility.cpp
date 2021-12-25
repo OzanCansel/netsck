@@ -1,8 +1,6 @@
 #include "hex_utility.hpp"
 #include <iostream>
-#include <iomanip>
 #include <cmath>
-#include <array>
 #include <tableprinter/tableprinter.hpp>
 
 QByteArray hex_utility::from( const QByteArray& data ) const
