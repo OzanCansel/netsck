@@ -1,4 +1,4 @@
-.TH netsck 7 2021-12-23 "API" "Javascript API Manual"
+.TH netsck 7 2021-12-25 "API" "Javascript API Manual"
 
 .SH NAME
 Hex : singleton class
@@ -29,4 +29,8 @@ Prints the data as hexadecimals in table format.
 
 .TP
 .B from( hex_data : QByteArray ) -> QByteArray
-Enables/Disables info messages according to the 'value' parameter. Default value is true.
+Constructs a
+.B QByteArray
+from hex string.
+It is equivalent to
+.B QByteArray::fromHex.

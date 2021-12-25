@@ -1,4 +1,4 @@
-.TH netsck 7 2021-12-23 "API" "Javascript API Manual"
+.TH netsck 7 2021-12-25 "API" "Javascript API Manual"
 
 .SH NAME
 udp_socket : class
@@ -60,16 +60,17 @@ It is returned from
 method.
 
 .SH METHODS
-.B stdout_enabled() -> bool
-Returns a value which indicates whether info messages are enabled.
-
 .TP
 .B has_datagram() -> bool
 Returns true if has pending datagram, otherwise false.
+It is equivalent to
+.B QUdpSocket::hasPendingDatagrams().
 
 .TP
 .B read_datagram() -> datagram
 Returns the pending datagram. If there is not datagram returns an 'undefined'.
+It is equivalent to
+.B QUdpSocket::receiveDatagram.
 
 .TP
 .B clear()
@@ -79,9 +80,13 @@ Discards all pending datagrams.
 .B send( data : QByteArray , addr : string , port : int ) -> qint64
 Sends 'data' to 'addr:port' as udp packet.
 Returns how many bytes have been written.
+It is equivalent to
+.B QUdpSocket::writeDatagram
 
 .SH SIGNALS
 
 .TP
 .B datagram()
 Emitted when a new datagram has come.
+It is equivalent to
+.B QUdpSocket::readyRead.
