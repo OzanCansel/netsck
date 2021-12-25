@@ -1,4 +1,4 @@
-.TH netsck 7 2021-12-23 "API" "Javascript API Manual"
+.TH netsck 7 2021-12-25 "API" "Javascript API Manual"
 
 .SH NAME
 socket : abstract class
@@ -14,30 +14,46 @@ It is binding of QAbstractSocket class.
 It is not instantiable.
 
 .SH METHODS
+.TP
 .B stdout_enabled() -> bool
 Returns a value which indicates whether info messages are enabled.
 
 .TP
 .B enable_stdout( value : bool = true )
+.br
 Enables/Disables info messages according to the 'value' parameter.
 .br
 Default value is true.
 
 .TP
+.B addr() -> string
+Returns host address of local socket. It is equivalent to
+.B QAbstractSocket::localAddress.
+
+.TP
 .B port() -> int
-Returns binded port
+Returns the host port numberr of the local socket. It is equivalent to
+.B QAbstractSocket::localPort.
 
 .TP
 .B close()
-Closes the socket
+Closes the socket. It is equivalent to
+.B QAbstractSocket::close
 
 .TP
 .B bind( addr : string , port : int = 0 , mode : enum ) -> bool
-Binds sockets according to the parameters.
+Binds sockets according to the parameters. It is equivalent to
+.B AbstractSocket::bind.
 .br
 If port is '0' so the socket selects an arbitrary empty port.
 .br
 Returns true if an operation is successful, otherwise false.
+
+.TP
+.B flush( timeout : int = -1 ) -> bool
+Flushes write buffer. It is equivalent to 
+.B QAbstractSocket::waitForBytesWritten.
+Returns true if bytes have been written, otherwise false
 
 .TP
 .B bind( port : int = 0 , mode : enum ) -> bool
@@ -48,6 +64,8 @@ and returns its result.
 .TP
 .B wait( duration : int = -1 ) -> bool
 Waits for the datagrams by duration. Unit of duration is milliseconds.
+It is equivalent to
+.B QAbstractSocket::waitForReadyRead.
 .br
 If duration is '\-1' so it waits until some datagram is received.
 .br
@@ -56,9 +74,12 @@ Returns true if new data has arrived, otherwise false.
 .TP
 .B wait_a_bit( duration : int = 0 ) -> bool
 If some datagrams waits on the OS buffer, it just fetches so waits_a_bit.
+It is equivalent toq
+.B QAbstractSocket::waitForReadyRead.
 .br
 Returns true if new data has arrived, otherwise false.
 
 .TP
 .B error() -> enum
-Returns the last error.
+Returns the last error. It is equivalent to
+.B QAbstractSocket::error.
