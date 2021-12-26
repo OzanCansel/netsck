@@ -15,7 +15,7 @@ public:
 
 public slots:
 
-    void help( QString topic = QString { "base-api" } );
+    void help( QString topic = QString { "netsck" } );
     void run( QString file_path );
     void dump( QJSValue );
     void sleep( int );
