@@ -8,6 +8,7 @@
   </a>
 </p>
 
+
 # netsck
 `netsck` is a network utility tool which is developed to prototype or test network things. It provides a shell inside which runs javascript engine. Makes posible to create, bind, send data through or receive data from a socket. Current only `udp_socket` is implemented.
 
@@ -20,6 +21,19 @@
 - GCC 7.3.1 and greater
 
 - Currently tested only on Linux but should work for Windows too.
+
+Note that, __netsck__ uses ansi color codes to colorize the terminal. On Windows, it is disabled by default so if you want to have a better look, you should enable virtual terminal with :
+```
+[HKEY_CURRENT_USER\Console]
+"VirtualTerminalLevel"=dword:00000001
+```
+
+## Documentation
+In doc folder [man pages](https://github.com/OzanCansel/netsck/blob/master/doc) and [merged-pdf](https://github.com/OzanCansel/netsck/blob/master/doc/netsck-js-api.pdf) version of man pages exist.
+
+Man pages are accessible from __netsck__ in application, so just type `help()` to the console.
+On Linux, man pages are embedded.
+On Windows, __netsck__ tells to the explorer.exe to open [merged-pdf](https://github.com/OzanCansel/netsck/blob/master/doc/netsck-js-api.pdf) version.
 
 ## How to build ?
 ### On Ubuntu 18.04 or 20.04
