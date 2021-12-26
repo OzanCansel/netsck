@@ -1,6 +1,7 @@
 #include "help_doc.hpp"
 #include <QFileInfo>
 #include <QStandardPaths>
+#include <QtGlobal>
 #include <iostream>
 
 help_doc::help_doc()
