@@ -5,22 +5,26 @@
 
 help_doc::help_doc()
 {
-#ifndef Q_OS_WIN
     prepare();
-#endif
 }
 
 QString help_doc::file_path( const QString& topic ) const
 {
+#ifdef Q_OS_WIN
+    return doc_directory().filePath(
+        "netsck-js-api.pdf"
+    );
+#else
     return doc_directory().filePath(
         QString { topic }.append( ".7" ).toLower()
     );
+#endif
 }
 
 bool help_doc::exists( const QString& topic ) const
 {
 #ifdef Q_OS_WIN
-    return false;
+    return true;
 #else
     return QFileInfo::exists( file_path( topic ) );
 #endif
@@ -37,7 +41,7 @@ void help_doc::prepare()
         local_doc_dir = doc_directory();
 
         auto man_page_paths = rcc_doc_dir.entryInfoList(
-            { "*.7" } ,
+            { "*.7" , "*.pdf" } ,
             QDir::NoDotAndDotDot | QDir::Files
         );
 

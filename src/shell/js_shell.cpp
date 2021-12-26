@@ -1,4 +1,5 @@
 #include "js_shell.hpp"
+#include <QtGlobal>
 #include <QQmlEngine>
 #include <QJSValueIterator>
 #include <QFile>
@@ -32,12 +33,19 @@ void js_shell::help( QString topic )
         return;
     }
 
+#ifdef Q_OS_WIN
+    QProcess::startDetached(
+        "cmd.exe" ,
+        { "/c" , m_doc.file_path( topic ) }
+    );
+#else
     auto command = QString {
         "/bin/man %1"
     }.arg( m_doc.file_path( topic ) )
      .toStdString();
 
     system( command.c_str() );
+#endif
 }
 
 void js_shell::run( QString file_path )
