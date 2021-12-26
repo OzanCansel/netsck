@@ -40,7 +40,7 @@ void js_shell::help( QString topic )
     );
 #else
     auto command = QString {
-        "/bin/man %1"
+        "/bin/man \"%1\""
     }.arg( m_doc.file_path( topic ) )
      .toStdString();
 
