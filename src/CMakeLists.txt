@@ -9,6 +9,7 @@ add_subdirectory( third_party/replxx EXCLUDE_FROM_ALL )
 add_subdirectory( third_party/tableprinter EXCLUDE_FROM_ALL )
 
 add_executable( netsck main.cpp
+                       $<$<PLATFORM_ID:Windows>:logo.rc>
                        doc.qrc
                        shell/shell.hpp
                        shell/shell.cpp
