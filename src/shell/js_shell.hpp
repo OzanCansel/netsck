@@ -31,6 +31,7 @@ private:
     void print_if_error( QJSValue );
     void inject_self();
     void inject_classes();
+    void inject_constants();
 
     help_doc m_doc;
     QJSEngine m_engine;

@@ -6,6 +6,7 @@
 #include <QProcess>
 #include <QStandardPaths>
 #include <QFileInfo>
+#include <QAbstractSocket>
 #include <thread>
 #include <iostream>
 #include <sys/types.h>
@@ -19,6 +20,7 @@ js_shell::js_shell()
 
     inject_self();
     inject_classes();
+    inject_constants();
 }
 
 void js_shell::help( QString topic )
@@ -152,5 +154,39 @@ void js_shell::inject_classes()
     m_engine.globalObject().setProperty(
         "udp_socket" ,
         m_engine.newQMetaObject( &udp_socket::staticMetaObject )
+    );
+}
+
+void js_shell::inject_constants()
+{
+    auto global { m_engine.globalObject() };
+
+    global.setProperty(
+        "LocalHost" ,
+        "127.0.0.1"
+    );
+    global.setProperty(
+        "Broadcast" ,
+        "255.255.255.255"
+    );
+    global.setProperty(
+        "AnyIPv4" ,
+        "0.0.0.0"
+    );
+    global.setProperty(
+        "ShareAddress" ,
+        QAbstractSocket::ShareAddress
+    );
+    global.setProperty(
+        "DontShareAddress" ,
+        QAbstractSocket::DontShareAddress
+    );
+    global.setProperty(
+        "ReuseAddressHint" ,
+        QAbstractSocket::ReuseAddressHint
+    );
+    global.setProperty(
+        "DefaultForPlatorm"  ,
+        QAbstractSocket::DefaultForPlatform
     );
 }

@@ -7,20 +7,34 @@
 #include <regex>
 #include <iostream>
 
-static auto function_call = R"(\w+\(.*\))";
-static auto var_keyword   = R"(\bvar\b)";
-static auto new_keyword   = R"(\bnew\b)";
-static auto hex_singleton = R"(\bHex\b)";
-static auto string_literal= R"(\"([^\\\"]|\\.)*\")";
+static auto function_call        = R"(\w+\(.*\))";
+static auto var_keyword          = R"(\bvar\b)";
+static auto new_keyword          = R"(\bnew\b)";
+static auto hex_singleton        = R"(\bHex\b)";
+static auto string_literal       = R"(\"([^\\\"]|\\.)*\")";
+static auto localhost            = R"(\bLocalHost\b)";
+static auto broadcast            = R"(\bBroadcast\b)";
+static auto anyipv4              = R"(\bAnyIPv4\b)";
+static auto share_address        = R"(\bShareAddress\b)";
+static auto dont_share_address   = R"(\bDontShareAddress\b)";
+static auto reuse_address_hint   = R"(\bReuseAddressHint\b)";
+static auto default_for_platform = R"(\bDefaultForPlatform\b)";
 
 shell::shell()
     :   m_highlights 
         {
-            { function_call  , replxx::Replxx::Color::BROWN } ,
-            { var_keyword    , replxx::Replxx::Color::BLUE } ,
-            { new_keyword    , replxx::Replxx::Color::BLUE } ,
-            { hex_singleton  , replxx::Replxx::Color::BLUE } ,
-            { string_literal , replxx::Replxx::Color::MAGENTA }
+            { function_call        , replxx::Replxx::Color::BROWN   } ,
+            { var_keyword          , replxx::Replxx::Color::BLUE    } ,
+            { new_keyword          , replxx::Replxx::Color::BLUE    } ,
+            { hex_singleton        , replxx::Replxx::Color::BLUE    } ,
+            { string_literal       , replxx::Replxx::Color::MAGENTA } ,
+            { localhost            , replxx::Replxx::Color::CYAN    } ,
+            { broadcast            , replxx::Replxx::Color::CYAN    } ,
+            { anyipv4              , replxx::Replxx::Color::CYAN    } ,
+            { share_address        , replxx::Replxx::Color::CYAN    } ,
+            { dont_share_address   , replxx::Replxx::Color::CYAN    } ,
+            { reuse_address_hint   , replxx::Replxx::Color::CYAN    } ,
+            { default_for_platform , replxx::Replxx::Color::CYAN    }
         }
 {
     configure_terminal();
