@@ -189,4 +189,8 @@ void js_shell::inject_constants()
         "DefaultForPlatorm"  ,
         QAbstractSocket::DefaultForPlatform
     );
+
+    auto key = m_engine.newObject();
+    fill_keys( key );
+    global.setProperty( "Key" , key );
 }

@@ -11,6 +11,7 @@ static auto function_call        = R"(\w+\(.*\))";
 static auto var_keyword          = R"(\bvar\b)";
 static auto new_keyword          = R"(\bnew\b)";
 static auto hex_singleton        = R"(\bHex\b)";
+static auto key_singletion       = R"(\bKey\b)";
 static auto string_literal       = R"(\"([^\\\"]|\\.)*\")";
 static auto localhost            = R"(\bLocalHost\b)";
 static auto broadcast            = R"(\bBroadcast\b)";

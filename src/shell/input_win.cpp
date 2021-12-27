@@ -85,3 +85,6 @@ int wait_key( int timeout )
 
     return key;
 }
+
+void fill_keys( QJSValue& keys )
+{   }

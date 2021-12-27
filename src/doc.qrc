@@ -4,6 +4,7 @@
         <file>../doc/socket.7</file>
         <file>../doc/udp_socket.7</file>
         <file>../doc/hex.7</file>
+        <file>../doc/key.7</file>
         <file>../doc/netsck-js-api.pdf</file>
     </qresource>
 </RCC>
