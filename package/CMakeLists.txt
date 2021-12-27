@@ -14,9 +14,9 @@ if ( MINGW )
     set( CPACK_NSIS_CREATE_ICONS_EXTRA
          "CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\netsck.lnk' '$INSTDIR\\\\bin\\\\netsck.exe'" )
     set( CPACK_NSIS_DELETE_ICONS_EXTRA
-          "Delete '$SMPROGRAMS\\\\$START_MENU\\\\netsck.lnk'" )
+         "Delete '$SMPROGRAMS\\\\$START_MENU\\\\netsck.lnk'" )
     list( APPEND CPACK_NSIS_EXTRA_INSTALL_COMMANDS
-                   "WriteRegDWORD HKCU 'Console' 'VirtualTerminalLevel' 0x0000001"
+                 "WriteRegDWORD HKCU 'Console' 'VirtualTerminalLevel' 0x0000001"
     )
 
     install(
