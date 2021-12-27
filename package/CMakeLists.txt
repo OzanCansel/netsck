@@ -34,6 +34,16 @@ if ( MINGW )
             ${CMAKE_PREFIX_PATH}/bin/libwinpthread-1.dll
         DESTINATION bin
     )
+
+    install(
+        FILES ../LICENSE
+        DESTINATION copyright
+    )
+
+    install(
+        FILES ../src/third_party/replxx/LICENSE.md
+        DESTINATION copyright/replxx
+    )
 else()
     install(
         DIRECTORY ../doc/
