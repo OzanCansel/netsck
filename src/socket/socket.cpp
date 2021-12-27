@@ -86,11 +86,6 @@ bool socket::bind(
     return binded;
 }
 
-bool socket::bind( int port , QAbstractSocket::BindMode mode ) noexcept
-{
-    return bind( "0.0.0.0" , port , mode );
-}
-
 bool socket::flush( int duration )
 {
     return m_sck.waitForBytesWritten( duration );

@@ -23,10 +23,6 @@ public slots:
         int port = 0 ,
         QAbstractSocket::BindMode mode = QAbstractSocket::DefaultForPlatform
     ) noexcept;
-    bool bind(
-        int port = 0 ,
-        QAbstractSocket::BindMode mode = QAbstractSocket::DefaultForPlatform
-    ) noexcept;
     bool flush( int duration = -1 );
     bool wait( int duration = -1 );
     bool wait_a_bit();
