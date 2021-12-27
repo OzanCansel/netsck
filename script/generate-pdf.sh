@@ -30,6 +30,10 @@ do
     ${ps2pdf} ${ts_file} ${pdf_file}
 done
 
-pdfunite ${pdf_files_dir}/*.pdf netsck-js-api.pdf
+pdfunite ${pdf_files_dir}/netsck.pdf \
+         ${pdf_files_dir}/socket.pdf \
+         ${pdf_files_dir}/udp_socket.pdf \
+         ${pdf_files_dir}/hex.pdf \
+         netsck-js-api.pdf
 echo "'netsck-js-api.pdf' generated."
 echo
