@@ -42,6 +42,16 @@ Sleeps current thread for specified duration.
 Unit is milliseconds.
 
 .TP
+.B array( data : QByteArray ) -> Array
+Converts QByteArray to javascript array.
+
+.TP
+.B flat( data : Array ) -> QByteArray
+Converts a javascript array to QByteArray.
+Array should contain either number or characters.
+Numbers should be between 0-255.
+
+.TP
 .B wait_key( timeout : int )
 Waits for user to input a key and returns the value.
 Key value is the value returned from

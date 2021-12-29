@@ -103,6 +103,49 @@ int js_shell::wait_key( int timeout )
     return ::wait_key( timeout );
 }
 
+QJSValue js_shell::array( QByteArray data )
+{
+    auto arr = m_engine.newArray(
+        std::size( data )
+    );
+
+    for ( auto i = 0; i < std::size( data ); ++i )
+        arr.setProperty( i , std::uint8_t( data.at( i ) ) );
+
+    return arr;
+}
+
+QVariant js_shell::flat( QJSValue val )
+{
+    if ( val.isArray() )
+    {
+        auto size = val.property( "length" ).toInt();
+
+        QByteArray flattened ( size , 0 );
+
+        for ( auto i = 0; i < size; ++i )
+        {
+            auto prop = val.property( i );
+
+            if ( prop.isNumber() )
+            {
+                flattened[ i ] = char( prop.toInt() );
+            }
+            else if ( prop.isString() )
+            {
+                auto elem = prop.toString();
+
+                if ( std::size( elem ) == 1 )
+                    flattened[ i ] = elem.front().toLatin1();
+            }
+        }
+
+        return flattened;
+    }
+
+    return QVariant {};
+}
+
 void js_shell::process( QString line )
 {
     auto result = m_engine.evaluate( line );

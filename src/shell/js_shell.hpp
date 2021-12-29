@@ -19,6 +19,8 @@ public slots:
     void run( QString file_path );
     void dump( QJSValue );
     void sleep( int );
+    QJSValue array( QByteArray );
+    QVariant flat( QJSValue );
     int  wait_key( int timeout = 33 );
     void process( QString );
 
