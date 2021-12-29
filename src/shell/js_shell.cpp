@@ -11,7 +11,6 @@
 #include <QtEndian>
 #include <thread>
 #include <iostream>
-#include <sys/types.h>
 #include "socket/udp_socket.hpp"
 #include "hex/hex_utility.hpp"
 #include "input.hpp"
