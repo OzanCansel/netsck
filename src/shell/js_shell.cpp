@@ -137,7 +137,7 @@ QVariant js_shell::flat( QJSValue val )
                 auto elem = prop.toString();
 
                 if ( std::size( elem ) == 1 )
-                    flattened[ i ] = elem.front().toLatin1();
+                    flattened[ i ] = elem.at( 0 ).toLatin1();
             }
         }
 
