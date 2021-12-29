@@ -42,6 +42,15 @@ Sleeps current thread for specified duration.
 Unit is milliseconds.
 
 .TP
+.B wait_key( timeout : int )
+Waits for user to input a key and returns the value.
+Key value is the value returned from
+.B std::getchar().
+If timeout expires function returns -1.
+Unit of timeout is milliseconds.
+Note that if timeout is -1 it works like there is no timeout.
+
+.TP
 .B array( data : QByteArray ) -> Array
 Converts QByteArray to javascript array.
 
@@ -52,13 +61,60 @@ Array should contain either number or characters.
 Numbers should be between 0-255.
 
 .TP
-.B wait_key( timeout : int )
-Waits for user to input a key and returns the value.
-Key value is the value returned from
-.B std::getchar().
-If timeout expires function returns -1.
-Unit of timeout is milliseconds.
-Note that if timeout is -1 it works like there is no timeout.
+.B beint16( num : short ) -> Array
+Converts a short to 2 bytes representation over javascript array.
+If host system is little endian, bytes are reversed.
+
+.TP
+.B beint32( num : int ) -> Array
+Converts an integer to 4 bytes representation over javascript array.
+If host system is little endian, bytes are reversed.
+
+.TP
+.B beint64( num : double ) -> Array
+Converts an double to quint64 and to 8 bytes representation over javascript array.
+If host system is little endian, bytes are reversed.
+.br
+Note that, double represents maximum 53 bits resolution for integers,
+so if you have bigger number they probably be truncated.
+
+.TP
+.B befloat( num : float ) -> Array
+Converts a float to 4 bytes representation over javascript array.
+If host system is little endian, bytes are reversed.
+
+.TP
+.B bedouble( num : double ) -> Array
+Converts a double to 4 bytes representation over javascript array.
+If host system is little endian, bytes are reversed.
+
+.TP
+.B leint16( num : short ) -> Array
+Converts a short to 2 bytes representation over javascript array.
+If host system is big endian, bytes are reversed.
+
+.TP
+.B leint32( num : int ) -> Array
+Converts an integer to 4 bytes representation over javascript array.
+If host system is big endian, bytes are reversed.
+
+.TP
+.B leint64( num : double ) -> Array
+Converts an double to quint64 and to 8 bytes representation over javascript array.
+If host system is big endian, bytes are reversed.
+.br
+Note that, double represents maximum 53 bits resolution for integers,
+so if you have bigger number they probably be truncated.
+
+.TP
+.B lefloat( num : float ) -> Array
+Converts a float to 4 bytes representation over javascript array.
+If host system is big endian, bytes are reversed.
+
+.TP
+.B ledouble( num : double ) -> Array
+Converts a double to 4 bytes representation over javascript array.
+If host system is big endian, bytes are reversed.
 
 .SH CLASSES
 Detailed class documentations can be found through 

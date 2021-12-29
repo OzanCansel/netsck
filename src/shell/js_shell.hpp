@@ -19,9 +19,19 @@ public slots:
     void run( QString file_path );
     void dump( QJSValue );
     void sleep( int );
+    int  wait_key( int timeout = 33 );
     QJSValue array( QByteArray );
     QVariant flat( QJSValue );
-    int  wait_key( int timeout = 33 );
+    QJSValue beint16( int );
+    QJSValue beint32( int );
+    QJSValue beint64( double );
+    QJSValue befloat( float );
+    QJSValue bedouble( double );
+    QJSValue leint16( int );
+    QJSValue leint32( int );
+    QJSValue leint64( double );
+    QJSValue lefloat( float );
+    QJSValue ledouble( double );
     void process( QString );
 
 signals:

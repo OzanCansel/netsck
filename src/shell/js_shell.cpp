@@ -7,13 +7,14 @@
 #include <QStandardPaths>
 #include <QFileInfo>
 #include <QAbstractSocket>
+#include <QDataStream>
+#include <QtEndian>
 #include <thread>
 #include <iostream>
 #include <sys/types.h>
 #include "socket/udp_socket.hpp"
 #include "hex/hex_utility.hpp"
 #include "input.hpp"
-
 js_shell::js_shell()
 {
     m_engine.installExtensions( QJSEngine::AllExtensions );
@@ -144,6 +145,126 @@ QVariant js_shell::flat( QJSValue val )
     }
 
     return QVariant {};
+}
+
+QJSValue js_shell::beint16( int value )
+{
+    QByteArray raw ( 2 , Qt::Uninitialized );
+
+    qToBigEndian(
+        quint16( value ) ,
+        raw.data()
+    );
+
+    return array( raw );
+}
+
+QJSValue js_shell::beint32( int value )
+{
+    QByteArray raw { 4 , Qt::Uninitialized };
+
+    qToBigEndian(
+        value ,
+        raw.data()
+    );
+
+    return array( raw );
+}
+
+QJSValue js_shell::beint64( double value )
+{
+    QByteArray raw { 8 , Qt::Uninitialized };
+
+    qToBigEndian(
+        quint64( value ) ,
+        raw.data()
+    );
+
+    return array( raw );
+}
+
+QJSValue js_shell::befloat( float value )
+{
+    QByteArray raw { 4 , Qt::Uninitialized };
+
+    qToBigEndian(
+        value ,
+        raw.data()
+    );
+
+    return array( raw );
+}
+
+QJSValue js_shell::bedouble( double value )
+{
+    QByteArray raw { 8 , Qt::Uninitialized };
+
+    qToBigEndian(
+        value ,
+        raw.data()
+    );
+
+    return array( raw );
+}
+
+QJSValue js_shell::leint16( int value )
+{
+    QByteArray raw { 2 , Qt::Uninitialized };
+
+    qToLittleEndian(
+        quint16( value ) ,
+        raw.data()
+    );
+
+    return array( raw );
+}
+
+QJSValue js_shell::leint32( int value )
+{
+    QByteArray raw { 4 , Qt::Uninitialized };
+
+    qToLittleEndian(
+        value ,
+        raw.data()
+    );
+
+    return array( raw );
+}
+
+QJSValue js_shell::leint64( double value )
+{
+    QByteArray raw { 8 , Qt::Uninitialized };
+
+    qToLittleEndian(
+        quint64( value ) ,
+        raw.data()
+    );
+
+    return array( raw );
+}
+
+QJSValue js_shell::lefloat( float value )
+{
+    QByteArray raw { 4 , Qt::Uninitialized };
+
+    qToLittleEndian(
+        value ,
+        raw.data()
+    );
+
+    return array( raw );
+}
+
+QJSValue js_shell::ledouble( double value )
+{
+    QByteArray raw { 8 , Qt::Uninitialized };
+
+    qToLittleEndian(
+        value ,
+        raw.data()
+    );
+
+    return array( raw );
 }
 
 void js_shell::process( QString line )
