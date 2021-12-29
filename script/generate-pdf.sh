@@ -36,5 +36,6 @@ pdfunite ${pdf_files_dir}/netsck.pdf \
          ${pdf_files_dir}/hex.pdf \
          ${pdf_files_dir}/key.pdf \
          netsck-js-api.pdf
+
 echo "'netsck-js-api.pdf' generated."
 echo
