@@ -15,6 +15,7 @@
 #include "socket/udp_socket.hpp"
 #include "hex/hex_utility.hpp"
 #include "input.hpp"
+
 js_shell::js_shell()
 {
     m_engine.installExtensions( QJSEngine::AllExtensions );
