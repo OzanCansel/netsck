@@ -132,6 +132,10 @@ QVariant js_shell::flat( QJSValue val )
             {
                 flattened[ i ] = char( prop.toInt() );
             }
+            else if ( prop.isBool() )
+            {
+                flattened[ i ] = char( prop.toInt() );
+            }
             else if ( prop.isString() )
             {
                 auto elem = prop.toString();
