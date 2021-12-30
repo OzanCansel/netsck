@@ -104,6 +104,15 @@ int js_shell::wait_key( int timeout )
     return ::wait_key( timeout );
 }
 
+QString js_shell::read_line()
+{
+    std::string line;
+
+    std::getline( std::cin , line );
+
+    return QString::fromStdString( line );
+}
+
 QJSValue js_shell::array( QByteArray data )
 {
     auto arr = m_engine.newArray(

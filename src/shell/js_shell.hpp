@@ -20,6 +20,7 @@ public slots:
     void dump( QJSValue );
     void sleep( int );
     int  wait_key( int timeout = 33 );
+    QString read_line();
     QJSValue array( QByteArray );
     QVariant flat( QJSValue );
     QJSValue beint16( int );
