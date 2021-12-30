@@ -85,6 +85,12 @@ int js_shell::run( QString file_path )
     return result.isError();
 }
 
+void js_shell::stdout( QJSValue val )
+{
+    std::cout << val.toString().toStdString();
+    std::cout.flush();
+}
+
 void js_shell::dump( QJSValue val )
 {
     QJSValue fun = m_engine.evaluate(
