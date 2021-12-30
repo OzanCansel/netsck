@@ -51,7 +51,7 @@ void js_shell::help( QString topic )
 #endif
 }
 
-void js_shell::run( QString file_path )
+int js_shell::run( QString file_path )
 {
     if ( !QFile::exists( file_path ) )
     {
@@ -60,7 +60,7 @@ void js_shell::run( QString file_path )
                   << "' does not exist."
                   << std::endl;
 
-        return;
+        return 1;
     }
 
     QFile script_f { file_path };
@@ -73,7 +73,7 @@ void js_shell::run( QString file_path )
                   << script_f.errorString().toStdString()
                   << std::endl;
 
-        return;
+        return 1;
     }
 
     auto script = QString::fromUtf8( script_f.readAll() );
@@ -81,6 +81,8 @@ void js_shell::run( QString file_path )
     auto result = m_engine.evaluate( script );
 
     print_if_error( result );
+
+    return result.isError();
 }
 
 void js_shell::dump( QJSValue val )

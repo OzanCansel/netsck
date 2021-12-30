@@ -9,6 +9,13 @@ int main( int argc , char* argv[] )
     QCoreApplication::setApplicationName( "netsck" );
     QCoreApplication::setApplicationVersion( "v0.0.1" );
 
+    if ( argc > 1 )
+    {
+        js_shell terminal;
+
+        return terminal.run( argv[ 1 ] );
+    }
+
     shell terminal;
     js_shell js_terminal;
 

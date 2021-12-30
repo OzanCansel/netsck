@@ -29,8 +29,9 @@ Opens the man page according to the topic.
 If topic isn't given then opens this man page.
 
 .TP
-.B run( file_path : string )
+.B run( file_path : string ) -> int
 Executes the lines inside the file.
+Returns non-zero if any error occurred, otherwise 0.
 
 .TP
 .B dump( object : any )

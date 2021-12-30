@@ -16,7 +16,7 @@ public:
 public slots:
 
     void help( QString topic = QString { "netsck" } );
-    void run( QString file_path );
+    int  run( QString file_path );
     void dump( QJSValue );
     void sleep( int );
     int  wait_key( int timeout = 33 );
