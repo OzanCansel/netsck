@@ -61,11 +61,6 @@ while( ( c = wait_key( 1 ) ) != Key.ESC )
         else if ( command == summary )
         {
             station.send(
-                // "\n===============\n" +
-                // "pos    : " + pos + "\n" +
-                // "speed  : " + speed + "\n" +
-                // "engine : " + engine + "\n" +
-                // "===============\n" ,
                 flat( [ pos , speed , engine ] ) ,
                 cli_addr ,
                 cli_port
