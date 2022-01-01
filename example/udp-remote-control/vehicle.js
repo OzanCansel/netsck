@@ -4,8 +4,6 @@ station.bind( AnyIPv4 , 10000 )
 
 var c      = 0
 var engine = true
-var h_dir  = -1
-var v_dir  = -1
 var pos    = 25
 var h_max  = 50
 var tick   = now()
