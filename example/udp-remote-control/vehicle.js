@@ -26,7 +26,7 @@ var draw_if= function(){
     visual += "|" + speed + " fps"
     visual += "\n"
 
-    stdout( visual )
+    std_out( visual )
 }
 
 print( "Station listening port " + station.port() )

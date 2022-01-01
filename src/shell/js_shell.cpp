@@ -85,7 +85,7 @@ int js_shell::run( QString file_path )
     return result.isError();
 }
 
-void js_shell::stdout( QJSValue val )
+void js_shell::std_out( QJSValue val )
 {
     std::cout << val.toString().toStdString();
     std::cout.flush();
