@@ -107,6 +107,15 @@ void js_shell::sleep( int duration_ms )
     );
 }
 
+double js_shell::now()
+{
+    using namespace std::chrono;
+
+    return duration_cast<milliseconds>(
+        steady_clock::now().time_since_epoch()
+    ).count();
+}
+
 int js_shell::wait_key( int timeout )
 {
     return ::wait_key( timeout );

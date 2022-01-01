@@ -47,6 +47,14 @@ Sleeps current thread for specified duration.
 Unit is milliseconds.
 
 .TP
+.B now() -> double
+Returns
+.B std::chrono::steady_clock::now().time_since_epoch()
+with milliseconds unit.
+Return type is double, but this is just because of allowing for the return value to hold larger values.
+Return value does not have fractional part.
+
+.TP
 .B wait_key( timeout : int )
 Waits for user to input a key and returns the value.
 Key value is the value returned from
