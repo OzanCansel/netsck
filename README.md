@@ -16,7 +16,7 @@
 
 - Depends on `QtQml`, `QtNetwork` and `QtCore`.
 
-- Qt 5.9.3 and greater
+- Qt 5.12.8 and greater
 
 - GCC 7.3.1 and greater
 
