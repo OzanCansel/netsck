@@ -1,8 +1,4 @@
 <p align="center">
-  <a href="https://github.com/OzanCansel/netsck/actions/workflows/cmake-gcc-ubuntu-1804.yml">
-    <img src="https://github.com/OzanCansel/netsck/actions/workflows/cmake-gcc-ubuntu-1804.yml/badge.svg" alt="codacy"/>
-  </a>
-  
   <a href="https://github.com/OzanCansel/netsck/actions/workflows/cmake-gcc-ubuntu-2004.yml">
     <img src="https://github.com/OzanCansel/netsck/actions/workflows/cmake-gcc-ubuntu-2004.yml/badge.svg" alt="codacy"/>
   </a>
