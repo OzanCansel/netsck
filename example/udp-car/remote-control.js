@@ -15,6 +15,16 @@ var help_fn = function(){
     print( "Press 'd' to move right" )
 }
 
+var send    = function( command ){
+    print( command )
+
+    rc.send(
+        command ,
+        station_ip ,
+        station_port
+    )
+}
+
 help_fn()
 
 var c = 0
@@ -26,41 +36,17 @@ while( ( c = wait_key( 30 ) ) != Key.ESC )
     if ( c == Key.h )
         help_fn()
     else if ( c == Key.e )
-        rc.send(
-            "ss_engine" ,
-            station_ip ,
-            station_port
-        )
+        send( "ss_engine" , )
     else if ( c == Key.f )
-        rc.send(
-            "summary" ,
-            station_ip ,
-            station_port
-        )
+        send( "summary" )
     else if ( c == Key.w )
-        rc.send(
-            "speed_up" ,
-            station_ip ,
-            station_port
-        )
+        send( "speed_up" )
     else if ( c == Key.a )
-        rc.send(
-            "move_left" ,
-            station_ip ,
-            station_port
-        )
+        send( "move_left" )
     else if ( c == Key.s )
-        rc.send(
-            "slow_down" ,
-            station_ip ,
-            station_port
-        )
+        send( "slow_down" )
     else if ( c == Key.d )
-        rc.send(
-            "move_right" ,
-            station_ip ,
-            station_port
-        )
+        send( "move_right" )
 
     while ( rc.has_datagram() )
         print( rc.read_datagram().data_utf8 )
