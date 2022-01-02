@@ -2,6 +2,7 @@
 
 #include <QJSEngine>
 #include <QDir>
+#include <QJSValue>
 #include "help/help_doc.hpp"
 
 class js_shell : public QObject
@@ -25,16 +26,22 @@ public slots:
     QString read_line();
     QJSValue array( QByteArray );
     QVariant flat( QJSValue );
-    QJSValue beint16( int );
-    QJSValue beint32( int );
-    QJSValue beint64( double );
-    QJSValue befloat( float );
-    QJSValue bedouble( double );
-    QJSValue leint16( int );
-    QJSValue leint32( int );
-    QJSValue leint64( double );
-    QJSValue lefloat( float );
-    QJSValue ledouble( double );
+    QJSValue beint16( QJSValue );
+    QJSValue beuint16( QJSValue );
+    QJSValue beint32( QJSValue );
+    QJSValue beuint32( QJSValue );
+    QJSValue beint64( QJSValue );
+    QJSValue beuint64( QJSValue );
+    QJSValue befloat( QJSValue );
+    QJSValue bedouble( QJSValue );
+    QJSValue leint16( QJSValue );
+    QJSValue leuint16( QJSValue );
+    QJSValue leint32( QJSValue );
+    QJSValue leuint32( QJSValue );
+    QJSValue leint64( QJSValue );
+    QJSValue leuint64( QJSValue );
+    QJSValue lefloat( QJSValue );
+    QJSValue ledouble( QJSValue );
     void process( QString );
 
 signals:

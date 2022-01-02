@@ -78,59 +78,191 @@ Array should contain either numbers, bools, or characters.
 Numbers should be between 0-255.
 
 .TP
-.B beint16( num : short ) -> Array
-Converts a short to 2 bytes representation over javascript array.
+.B beint16( num : int ) -> Array
+Extracts bytes and returns as an Array.
+Array will contain 2 elements which corresponds to the bytes.
+If host system is little endian, bytes are reversed.
+
+.TP
+.B beint16( data : Array ) -> int
+Treats Array as a byte array and extracts 'int16'.
+If host system is little endian, bytes are reversed.
+
+.TP
+.B beuint16( num : int ) -> Array
+Extracts bytes and returns as an Array.
+Array will contain 2 elements which corresponds to the bytes.
+If host system is little endian, bytes are reversed.
+
+.TP
+.B beuint16( data : Array ) -> int
+Treats Array as a byte array and extracts 'uint16'.
 If host system is little endian, bytes are reversed.
 
 .TP
 .B beint32( num : int ) -> Array
-Converts an integer to 4 bytes representation over javascript array.
+Extracts bytes and returns as an Array.
+Array will contain 4 elements which corresponds to the bytes.
+If host system is little endian, bytes are reversed.
+
+.TP
+.B beint32( data : Array ) -> int
+Treats Array as a byte array and extracts 'int32'.
+If host system is little endian, bytes are reversed.
+
+.TP
+.B beuint32( num : int ) -> Array
+Extracts bytes and returns as an Array.
+Array will contain 4 elements which corresponds to the bytes.
+If host system is little endian, bytes are reversed.
+
+.TP
+.B beuint32( data : Array ) -> int
+Treats Array as a byte array and extracts 'uint32'.
 If host system is little endian, bytes are reversed.
 
 .TP
 .B beint64( num : double ) -> Array
-Converts an double to quint64 and to 8 bytes representation over javascript array.
+Extracts bytes and returns as an Array.
+Array will contain 8 elements which corresponds to the bytes.
 If host system is little endian, bytes are reversed.
 .br
 Note that, double represents maximum 53 bits resolution for integers,
 so if you have bigger number they probably be truncated.
 
 .TP
-.B befloat( num : float ) -> Array
-Converts a float to 4 bytes representation over javascript array.
+.B beint64( data : Array ) -> double
+Treats Array as a byte array and extracts 'int64'.
+If host system is little endian, bytes are reversed.
+
+.TP
+.B beuint64( num : double ) -> Array
+Extracts bytes and returns as an Array.
+Array will contain 8 elements which corresponds to the bytes.
+If host system is little endian, bytes are reversed.
+.br
+Note that, double represents maximum 53 bits resolution for integers,
+so if you have bigger number they probably be truncated.
+
+.TP
+.B beuint64( data : Array ) -> double
+Treats Array as a byte array and extracts 'uint64'.
+If host system is little endian, bytes are reversed.
+
+.TP
+.B befloat( num : double ) -> Array
+Extracts bytes and returns as an Array.
+Array will contain 4 elements which corresponds to the bytes.
+If host system is little endian, bytes are reversed.
+
+.TP
+.B befloat( data : Array ) -> int
+Treats Array as a byte array and extracts 'float'.
 If host system is little endian, bytes are reversed.
 
 .TP
 .B bedouble( num : double ) -> Array
-Converts a double to 4 bytes representation over javascript array.
+Extracts bytes and returns as an Array.
+Array will contain 4 elements which corresponds to the bytes.
 If host system is little endian, bytes are reversed.
 
 .TP
-.B leint16( num : short ) -> Array
-Converts a short to 2 bytes representation over javascript array.
+.B bedouble( data : Array ) -> int
+Treats Array as a byte array and extracts 'double'.
+If host system is little endian, bytes are reversed.
+
+.TP
+.B leint16( num : int ) -> Array
+Extracts bytes and returns as an Array.
+Array will contain 2 elements which corresponds to the bytes.
+If host system is big endian, bytes are reversed.
+
+.TP
+.B leint16( data : Array ) -> int
+Treats Array as a byte array and extracts 'int16'.
+If host system is big endian, bytes are reversed.
+
+.TP
+.B leuint16( num : int ) -> Array
+Extracts bytes and returns as an Array.
+Array will contain 2 elements which corresponds to the bytes.
+If host system is big endian, bytes are reversed.
+
+.TP
+.B leuint16( data : Array ) -> int
+Treats Array as a byte array and extracts 'uint16'.
 If host system is big endian, bytes are reversed.
 
 .TP
 .B leint32( num : int ) -> Array
-Converts an integer to 4 bytes representation over javascript array.
+Extracts bytes and returns as an Array.
+Array will contain 4 elements which corresponds to the bytes.
+If host system is big endian, bytes are reversed.
+
+.TP
+.B leint32( data : Array ) -> int
+Treats Array as a byte array and extracts 'int32'.
+If host system is big endian, bytes are reversed.
+
+.TP
+.B leuint32( num : int ) -> Array
+Extracts bytes and returns as an Array.
+Array will contain 4 elements which corresponds to the bytes.
+If host system is big endian, bytes are reversed.
+
+.TP
+.B leuint32( data : Array ) -> int
+Treats Array as a byte array and extracts 'uint32'.
 If host system is big endian, bytes are reversed.
 
 .TP
 .B leint64( num : double ) -> Array
-Converts an double to quint64 and to 8 bytes representation over javascript array.
+Extracts bytes and returns as an Array.
+Array will contain 8 elements which corresponds to the bytes.
 If host system is big endian, bytes are reversed.
 .br
 Note that, double represents maximum 53 bits resolution for integers,
 so if you have bigger number they probably be truncated.
 
 .TP
-.B lefloat( num : float ) -> Array
-Converts a float to 4 bytes representation over javascript array.
+.B leint64( data : Array ) -> double
+Treats Array as a byte array and extracts 'int64'.
+If host system is big endian, bytes are reversed.
+
+.TP
+.B leuint64( num : double ) -> Array
+Extracts bytes and returns as an Array.
+Array will contain 8 elements which corresponds to the bytes.
+If host system is big endian, bytes are reversed.
+.br
+Note that, double represents maximum 53 bits resolution for integers,
+so if you have bigger number they probably be truncated.
+
+.TP
+.B leunt64( data : Array ) -> double
+Treats Array as a byte array and extracts 'uint64'.
+If host system is big endian, bytes are reversed.
+
+.TP
+.B lefloat( num : double ) -> Array
+Extracts bytes and returns as an Array.
+Array will contain 4 elements which corresponds to the bytes.
+If host system is big endian, bytes are reversed.
+
+.TP
+.B lefloat( data : Array ) -> double
+Treats Array as a byte array and extracts 'float'.
 If host system is big endian, bytes are reversed.
 
 .TP
 .B ledouble( num : double ) -> Array
-Converts a double to 4 bytes representation over javascript array.
+Extracts bytes and returns as an Array.
+Array will contain 8 elements which corresponds to the bytes.
+If host system is big endian, bytes are reversed.
+
+.TP
+.B ledouble( data : Array ) -> double
+Treats Array as a byte array and extracts 'double'.
 If host system is big endian, bytes are reversed.
 
 .SH CLASSES

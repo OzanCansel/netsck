@@ -177,124 +177,136 @@ QVariant js_shell::flat( QJSValue val )
     return QVariant {};
 }
 
-QJSValue js_shell::beint16( int value )
+template<typename F , typename C = F>
+QJSValue convert_be( QJSValue value , js_shell& shell )
 {
-    QByteArray raw ( 2 , Qt::Uninitialized );
+    if ( value.isNumber() )
+    {
+        QByteArray raw { sizeof( F ) , Qt::Uninitialized };
 
-    qToBigEndian(
-        quint16( value ) ,
-        raw.data()
-    );
+        qToBigEndian(
+            F( value.toNumber() ) ,
+            raw.data()
+        );
 
-    return array( raw );
+        return shell.array( raw );
+    }
+    else if ( value.isArray() )
+    {
+        return C(
+            qFromBigEndian<F>(
+                shell.flat( value ).toByteArray().data()
+            )
+        );
+    }
+
+    return QJSValue {};
 }
 
-QJSValue js_shell::beint32( int value )
+template<typename F , typename C = F>
+QJSValue convert_le( QJSValue value , js_shell& shell )
 {
-    QByteArray raw { 4 , Qt::Uninitialized };
+    if ( value.isNumber() )
+    {
+        QByteArray raw { sizeof( F ) , Qt::Uninitialized };
 
-    qToBigEndian(
-        value ,
-        raw.data()
-    );
+        qToLittleEndian(
+            F( value.toNumber() ) ,
+            raw.data()
+        );
 
-    return array( raw );
+        return shell.array( raw );
+    }
+    else if ( value.isArray() )
+    {
+        return C(
+            qFromLittleEndian<F>(
+                shell.flat( value ).toByteArray().data()
+            )
+        );
+    }
+
+    return QJSValue {};
 }
 
-QJSValue js_shell::beint64( double value )
+QJSValue js_shell::beint16( QJSValue value )
 {
-    QByteArray raw { 8 , Qt::Uninitialized };
-
-    qToBigEndian(
-        quint64( value ) ,
-        raw.data()
-    );
-
-    return array( raw );
+    return convert_be<qint16>( value , *this );
 }
 
-QJSValue js_shell::befloat( float value )
+QJSValue js_shell::beuint16( QJSValue value )
 {
-    QByteArray raw { 4 , Qt::Uninitialized };
-
-    qToBigEndian(
-        value ,
-        raw.data()
-    );
-
-    return array( raw );
+    return convert_be<quint16>( value , *this );
 }
 
-QJSValue js_shell::bedouble( double value )
+QJSValue js_shell::beint32( QJSValue value )
 {
-    QByteArray raw { 8 , Qt::Uninitialized };
-
-    qToBigEndian(
-        value ,
-        raw.data()
-    );
-
-    return array( raw );
+    return convert_be<qint32>( value , *this );
 }
 
-QJSValue js_shell::leint16( int value )
+QJSValue js_shell::beuint32( QJSValue value )
 {
-    QByteArray raw { 2 , Qt::Uninitialized };
-
-    qToLittleEndian(
-        quint16( value ) ,
-        raw.data()
-    );
-
-    return array( raw );
+    return convert_be<quint32>( value , *this );
 }
 
-QJSValue js_shell::leint32( int value )
+QJSValue js_shell::beint64( QJSValue value )
 {
-    QByteArray raw { 4 , Qt::Uninitialized };
-
-    qToLittleEndian(
-        value ,
-        raw.data()
-    );
-
-    return array( raw );
+    return convert_be<qint64 , double>( value , *this );
 }
 
-QJSValue js_shell::leint64( double value )
+QJSValue js_shell::beuint64( QJSValue value )
 {
-    QByteArray raw { 8 , Qt::Uninitialized };
-
-    qToLittleEndian(
-        quint64( value ) ,
-        raw.data()
-    );
-
-    return array( raw );
+    return convert_be<quint64 , double>( value , *this );
 }
 
-QJSValue js_shell::lefloat( float value )
+QJSValue js_shell::befloat( QJSValue value )
 {
-    QByteArray raw { 4 , Qt::Uninitialized };
-
-    qToLittleEndian(
-        value ,
-        raw.data()
-    );
-
-    return array( raw );
+    return convert_be<float>( value , *this );
 }
 
-QJSValue js_shell::ledouble( double value )
+QJSValue js_shell::bedouble( QJSValue value )
 {
-    QByteArray raw { 8 , Qt::Uninitialized };
+    return convert_be<double>( value , *this );
+}
 
-    qToLittleEndian(
-        value ,
-        raw.data()
-    );
+QJSValue js_shell::leint16( QJSValue value )
+{
+    return convert_le<qint16>( value , *this );
+}
 
-    return array( raw );
+QJSValue js_shell::leuint16( QJSValue value )
+{
+    return convert_le<quint16>( value , *this );
+}
+
+QJSValue js_shell::leint32( QJSValue value )
+{
+    return convert_le<qint32>( value , *this );
+}
+
+QJSValue js_shell::leuint32( QJSValue value )
+{
+    return convert_le<quint32>( value , *this );
+}
+
+QJSValue js_shell::leint64( QJSValue value )
+{
+    return convert_le<quint64 , double>( value , *this );
+}
+
+QJSValue js_shell::leuint64( QJSValue value )
+{
+    return convert_le<quint64 , double>( value , *this );
+}
+
+QJSValue js_shell::lefloat( QJSValue value )
+{
+    return convert_le<float>( value , *this );
+}
+
+QJSValue js_shell::ledouble( QJSValue value )
+{
+    return convert_le<double>( value , *this );
 }
 
 void js_shell::process( QString line )
