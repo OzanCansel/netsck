@@ -36,5 +36,5 @@ target_link_libraries( netsck PRIVATE Qt5::Core
                                       Qt5::Qml
                                       replxx::replxx
                                       tableprinter::tableprinter )
-
+target_compile_definitions( netsck PRIVATE -DAPP_VERSION=\"${CMAKE_PROJECT_VERSION}\" )
 target_compile_features( netsck PRIVATE cxx_std_17 )

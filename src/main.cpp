@@ -7,7 +7,7 @@ int main( int argc , char* argv[] )
     QCoreApplication app { argc , argv };
 
     QCoreApplication::setApplicationName( "netsck" );
-    QCoreApplication::setApplicationVersion( "v0.0.1" );
+    QCoreApplication::setApplicationVersion( APP_VERSION );
 
     if ( argc > 1 )
     {
