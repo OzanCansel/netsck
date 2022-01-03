@@ -1,7 +1,5 @@
 <p align="center">
   <img src="media/netsck-ss-1.png">
-  <img src="media/udp-hex-printer.gif"/>
-  <img src="media/udp-car.gif"/>
   
   <a href="https://github.com/OzanCansel/netsck/actions/workflows/cmake-gcc-ubuntu-2004.yml">
     <img src="https://github.com/OzanCansel/netsck/actions/workflows/cmake-gcc-ubuntu-2004.yml/badge.svg" alt="codacy"/>
