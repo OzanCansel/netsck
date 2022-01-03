@@ -1,4 +1,9 @@
 <p align="center">
+  <p>udp-hex-printer example</p>
+  <img src="media/udp-hex-printer.gif"/>
+  
+  <p>udp-car example</p>
+  <img src="media/udp-car.gif"/>
   <a href="https://github.com/OzanCansel/netsck/actions/workflows/cmake-gcc-ubuntu-2004.yml">
     <img src="https://github.com/OzanCansel/netsck/actions/workflows/cmake-gcc-ubuntu-2004.yml/badge.svg" alt="codacy"/>
   </a>
@@ -30,6 +35,52 @@ In doc folder [man pages](https://github.com/OzanCansel/netsck/blob/master/doc) 
 Man pages are accessible from __netsck__ in application, so just type `help()` to the console.
 On Linux, man pages are embedded.
 On Windows, __netsck__ tells to the explorer.exe to open [merged-pdf](https://github.com/OzanCansel/netsck/blob/master/doc/netsck-js-api.pdf) version.
+
+## Usage
+Create udp echo server
+
+``` Javascript
+var srv = new udp_socket()
+srv.bind( AnyIPv4 , 10000 )
+srv.enable_stdout( false )
+
+while( wait_key( 30 ) != Key.ESC )
+{
+    srv.wait_a_bit()
+    
+    while ( srv.has_datagram() )
+    {
+        var dgram = srv.read_datagram()
+        
+        Hex.print( dgram.data )
+        
+        srv.send(
+            dgram.data ,
+            dgram.sender_addr ,
+            dgram.sender_port
+        )
+    }
+}
+```
+Create udp client
+
+``` Javascript
+var cli = new udp_socket()
+
+cli.send(
+    "Hello, u there ?" ,
+    "127.0.0.1" ,
+    10000
+)
+
+cli.send(
+    flat(
+        [ 0x01 , 0x05 , 0x14 , ...beint32( 12345 ) , ...lefloat( 14.2 ) ]
+    ) ,
+    "127.0.0.1" ,
+    10000
+)
+```
 
 ## How to build ?
 ### On Ubuntu 18.04 or 20.04
