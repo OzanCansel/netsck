@@ -12,6 +12,7 @@
 #include <thread>
 #include <iostream>
 #include "socket/udp_socket.hpp"
+#include "socket/web_socket.hpp"
 #include "hex/hex_utility.hpp"
 #include "input.hpp"
 
@@ -360,6 +361,10 @@ void js_shell::inject_classes()
     m_engine.globalObject().setProperty(
         "udp_socket" ,
         m_engine.newQMetaObject( &udp_socket::staticMetaObject )
+    );
+    m_engine.globalObject().setProperty(
+        "web_socket" ,
+        m_engine.newQMetaObject( &web_socket::staticMetaObject )
     );
 }
 

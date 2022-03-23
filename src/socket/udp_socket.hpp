@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QUdpSocket>
+#include <queue>
 #include "socket.hpp"
 
 class udp_socket : public socket
