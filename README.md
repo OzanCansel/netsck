@@ -7,7 +7,7 @@
 </p>
 
 # netsck
-`netsck` is a network utility tool which is developed to prototype or test network things. It provides a shell inside which runs javascript engine. Makes posible to create, bind, send data through or receive data from a socket. Current only `udp_socket` is implemented.
+`netsck` is a network utility tool which is developed to prototype or test network things. It provides a shell inside which runs javascript engine. Makes possible to create, bind, send data through or receive data from a socket. Current only `udp_socket` is implemented.
 
 - It is a terminal application.
 
@@ -19,7 +19,7 @@
 
 - Currently tested only on Linux but should work for Windows too.
 
-Note that, __netsck__ uses ansi color codes to colorize the terminal. On Windows, it is disabled by default so if you want to have a better look, you should enable virtual terminal with :
+Note that, __netsck__ uses ansi color codes to colorize the terminal. On Windows, it is disabled by default so if you want 'netsck' to have a better look, you should enable virtual terminal with :
 ```
 [HKEY_CURRENT_USER\Console]
 "VirtualTerminalLevel"=dword:00000001
