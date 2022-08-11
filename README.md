@@ -7,7 +7,7 @@
 </p>
 
 # netsck
-`netsck` is a network utility tool which is developed to prototype or test network things. It provides a shell inside which runs javascript engine. Makes possible to create, bind, send data through or receive data from a socket. Current only `udp_socket` is implemented.
+`netsck` is a network utility tool which is developed to prototype or test network things. It provides a shell inside which runs javascript engine. Makes possible to create, bind, send data through or receive data from a socket. Currently only `udp_socket` is implemented.
 
 - It is a terminal application.
 
